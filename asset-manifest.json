@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/TextForm-react/static/css/main.f855e6bc.css",
+    "main.js": "/TextForm-react/static/js/main.08fe559f.js",
+    "static/js/453.1dfe7526.chunk.js": "/TextForm-react/static/js/453.1dfe7526.chunk.js",
+    "index.html": "/TextForm-react/index.html",
+    "main.f855e6bc.css.map": "/TextForm-react/static/css/main.f855e6bc.css.map",
+    "main.08fe559f.js.map": "/TextForm-react/static/js/main.08fe559f.js.map",
+    "453.1dfe7526.chunk.js.map": "/TextForm-react/static/js/453.1dfe7526.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.08fe559f.js"
+  ]
+}
