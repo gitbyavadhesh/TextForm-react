@@ -62,7 +62,13 @@ export default function TextForm(props) {
     <div className='container'  style={{color: props.mode === 'dark' ? 'white' : 'black'}}>
         <h1>{props.heading}</h1>
 <div className="mb-3">
-  <textarea className="form-control" value={text} onChange={handelOnChange} style={{backgroundColor: props.mode === 'dark' ? 'gray' : 'white', color: props.mode === 'dark' ? 'white' : 'black'}} id="myText" rows="8"></textarea>
+  <textarea className="form-control" value={text} onChange={handelOnChange} style={{
+    backgroundColor: props.mode === 'dark' ? 'gray' :
+                     props.mode === 'custom' ? 'inherit' : 'white',
+    color: props.mode === 'dark' ? 'white' :
+           props.mode === 'custom' ? 'inherit' : 'black'
+  }}
+ id="myText" rows="8"></textarea>
 </div> 
     <button className="btn primary mx-1" onClick={handleUpClick} style={{background: "cyan"}}>convert to UpperCase</button>
     <button className="btn primary mx-1" onClick={handleLowClick} style={{background: "cyan"}}>convert to LowerCase</button>
@@ -72,10 +78,14 @@ export default function TextForm(props) {
     <button className="btn primary mx-1" onClick={handleExtraSpace} style={{background: "cyan"}}>Remove Extra Spaces</button>
     <button className="btn primary mx-1" onClick={handleCapitalizeWords} style={{background: "cyan"}}>Capital First Letter</button>
     </div>
-    <div className="container my-2"  style={{color: props.mode === 'dark' ? 'white' : 'black'}}>
+    <div className="container my-2"  style={{ color: props.mode === 'dark' ? 'white' :
+         props.mode === 'custom' ? 'inherit' : 'black'
+}}>
       <h2>your text summary</h2>
-      <p>{text.split(" ").length} worda and {text.length} characters</p>
-      <p><b>{0.008 * text.split(" ").length}: Minutes to read its</b></p>
+      {/* 🔥 Fixed word count logic to ignore extra spaces */}
+<p>{text.trim().split(/\s+/).filter((word) => word.length > 0).length} words and {text.length} characters</p>
+      {/* 🔥 Fixed reading time calculation */}
+<p><b>{0.008 * text.trim().split(/\s+/).filter((word) => word.length > 0).length} Minutes to read</b></p>
       <h3>Preview</h3>
       <p>{text.length > 0 ? text : "Enter something in the textbox above to preview it here"}</p>
     </div>
