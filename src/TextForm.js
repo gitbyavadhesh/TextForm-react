@@ -32,11 +32,11 @@ export default function TextForm(props) {
         
     }
     const handleCopy = ()=>{
-        console.log("i am copy");
-          let text = document.getElementById("myText");
-          text.select();
-          navigator.clipboard.writeText(text.value);
-          document.getSelection().removeAllRanges();
+        // console.log("i am copy");
+        //   let text = document.getElementById("myText");
+        //   text.select();
+          navigator.clipboard.writeText(text);
+          // document.getSelection().removeAllRanges();
            props.showAlert("Text copy to clipboard", "success");
 
     }
