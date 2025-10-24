@@ -9,8 +9,7 @@ import About from './About';
 import { 
   BrowserRouter as Router,
    Routes, 
-   Route,
-    Link
+   Route
    } from 'react-router-dom';
 
 
@@ -40,19 +39,19 @@ function App() {
     if(mode === 'light'){
       setMode('dark');
       document.body.style.backgroundColor = '#072c51';
-      document.title = 'TextFrom - Dark Mode';
+      // document.title = 'TextFrom - Dark Mode';
       showAlert("Dark mode has been enabled", "success")
       setInterval(() => {
-        document.title = 'TextFrom is good soft';
+        // document.title = 'TextFrom is good soft';
       }, 2000);
       setInterval(() => {
-        document.title = 'install TextFrom ';
+        // document.title = 'install TextFrom ';
       }, 1500);
     }
     else{
       setMode('light');
       document.body.style.backgroundColor = 'white';
-      document.title = 'TextFrom - Light Mode';
+      // document.title = 'TextFrom - Light Mode';
       showAlert("Light mode has been enabled", "success")
     }
   }
@@ -79,8 +78,9 @@ function App() {
   <div className="container my-3">
    <Routes>
         <Route exact path="/about" element={<About />} /> 
-        <Route exact path="/" element={<TextForm showAlert={showAlert} heading="Enter your text to analyse" mode={mode}/>} />
+        <Route exact path="/" element={<TextForm showAlert={showAlert} heading="Try Textutils for text analyze" mode={mode}/>} />
    </Routes>
+   
 
   </div>
   </Router>

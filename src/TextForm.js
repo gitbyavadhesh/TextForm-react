@@ -36,6 +36,7 @@ export default function TextForm(props) {
           let text = document.getElementById("myText");
           text.select();
           navigator.clipboard.writeText(text.value);
+          document.getSelection().removeAllRanges();
            props.showAlert("Text copy to clipboard", "success");
 
     }
@@ -60,23 +61,23 @@ export default function TextForm(props) {
     return (
       <>
     <div className='container'  style={{color: props.mode === 'dark' ? 'white' : 'black'}}>
-        <h1>{props.heading}</h1>
+        <h2 className='mb-3'>{props.heading}</h2>
 <div className="mb-3">
   <textarea className="form-control" value={text} onChange={handelOnChange} style={{
-    backgroundColor: props.mode === 'dark' ? 'gray' :
+    backgroundColor: props.mode === 'dark' ? 'darkgray' :
                      props.mode === 'custom' ? 'inherit' : 'white',
     color: props.mode === 'dark' ? 'white' :
            props.mode === 'custom' ? 'inherit' : 'black'
   }}
  id="myText" rows="8"></textarea>
 </div> 
-    <button className="btn primary mx-1" onClick={handleUpClick} style={{background: "cyan"}}>convert to UpperCase</button>
-    <button className="btn primary mx-1" onClick={handleLowClick} style={{background: "cyan"}}>convert to LowerCase</button>
-    <button className="btn primary mx-1" onClick={handleClearClick} style={{background: "cyan"}}>clear text</button>
-    <button className="btn primary mx-1" onClick={handleOriginalClick} style={{background: "cyan"}}>original text</button>
-    <button className="btn primary mx-1" onClick={handleCopy} style={{background: "cyan"}}>Copy Text</button>
-    <button className="btn primary mx-1" onClick={handleExtraSpace} style={{background: "cyan"}}>Remove Extra Spaces</button>
-    <button className="btn primary mx-1" onClick={handleCapitalizeWords} style={{background: "cyan"}}>Capital First Letter</button>
+    <button disabled={text.length===0} className="btn primary mx-1 my-1" onClick={handleUpClick} style={{background: "cyan"}}>convert to UpperCase</button>
+    <button disabled={text.length===0} className="btn primary mx-1 my-1" onClick={handleLowClick} style={{background: "cyan"}}>convert to LowerCase</button>
+    <button disabled={text.length===0} className="btn primary mx-1 my-1" onClick={handleClearClick} style={{background: "cyan"}}>clear text</button>
+    <button  className="btn primary mx-1 my-1" onClick={handleOriginalClick} style={{background: "cyan"}}>original text</button>
+    <button disabled={text.length===0} className="btn primary mx-1 my-1" onClick={handleCopy} style={{background: "cyan"}}>Copy Text</button>
+    <button disabled={text.length===0} className="btn primary mx-1 my-1" onClick={handleExtraSpace} style={{background: "cyan"}}>Remove Extra Spaces</button>
+    <button disabled={text.length===0} className="btn primary mx-1 my-1" onClick={handleCapitalizeWords} style={{background: "cyan"}}>Capital First Letter</button>
     </div>
     <div className="container my-2"  style={{ color: props.mode === 'dark' ? 'white' :
          props.mode === 'custom' ? 'inherit' : 'black'
@@ -87,7 +88,7 @@ export default function TextForm(props) {
       {/* 🔥 Fixed reading time calculation */}
 <p><b>{0.008 * text.trim().split(/\s+/).filter((word) => word.length > 0).length} Minutes to read</b></p>
       <h3>Preview</h3>
-      <p>{text.length > 0 ? text : "Enter something in the textbox above to preview it here"}</p>
+      <p>{text.length > 0 ? text : "Nothing to preview"}</p>
     </div>
     </>
   )
